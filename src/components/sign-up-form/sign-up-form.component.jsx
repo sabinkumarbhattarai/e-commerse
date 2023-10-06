@@ -19,16 +19,12 @@ const SignUpForm = () => {
   const [formFields, setFormField] = useState(defaultFormFields);
   const { displayName, email, password, confirmPassword } = formFields;
 
-  console.log(formFields);
-
   const resetFormField = () => {
     setFormField(defaultFormFields);
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
-    //conform password matches
 
     if (password !== confirmPassword) {
       alert("Password doesnt match");
@@ -51,9 +47,6 @@ const SignUpForm = () => {
         console.log("User creation encounter an error", error);
       }
     }
-
-    //if authnticate the user or not
-    //create user document
   };
 
   const handleChange = (event) => {
@@ -65,7 +58,7 @@ const SignUpForm = () => {
     <div className="sign-up-container">
       <h2>Don't have an account</h2>
 
-      <span>Sign up with email and password</span>
+      <span>Sign up with your email and password</span>
       <form onSubmit={handleSubmit}>
         <FormInput
           label="Display Name"
