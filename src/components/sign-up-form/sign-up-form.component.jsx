@@ -8,6 +8,8 @@ import FormInput from "../form-input/form-input.component";
 import "./sign-up.styles.scss";
 import Button from "../button/button.component";
 
+
+
 const defaultFormFields = {
   displayName: "",
   email: "",
@@ -18,6 +20,8 @@ const defaultFormFields = {
 const SignUpForm = () => {
   const [formFields, setFormField] = useState(defaultFormFields);
   const { displayName, email, password, confirmPassword } = formFields;
+  
+
 
   const resetFormField = () => {
     setFormField(defaultFormFields);
