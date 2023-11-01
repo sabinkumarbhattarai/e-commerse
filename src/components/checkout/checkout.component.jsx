@@ -1,4 +1,3 @@
-// import { useContext } from "react";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import {
   selectCartItems,
