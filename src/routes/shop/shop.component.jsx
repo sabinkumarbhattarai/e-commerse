@@ -18,7 +18,7 @@ const Shop = () => {
       dispatch(setCaregories(categoriesArray));
     };
     getCategorymap();
-  }, []);
+  }, [dispatch]);
 
   return (
     <Routes>
