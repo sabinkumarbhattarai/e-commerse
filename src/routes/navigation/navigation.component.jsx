@@ -18,8 +18,8 @@ import {
 } from "./navigation.styles.jsx";
 
 const Navigation = () => {
-  const currentUser=useSelector(selectCurrentUser)
-  const isCartOpen=useSelector(selectIsCartOpen)
+  const currentUser = useSelector(selectCurrentUser);
+  const isCartOpen = useSelector(selectIsCartOpen);
 
   return (
     <Fragment>
@@ -41,7 +41,6 @@ const Navigation = () => {
 
         {isCartOpen && <CartDropdown />}
       </NavigationContainer>
-
       <Outlet />
     </Fragment>
   );

@@ -1,4 +1,5 @@
 import { useState } from "react";
+
 import {
   createAuthUserWithEmailAndPassword,
   createUserDocumentFromAuth,
@@ -7,8 +8,8 @@ import FormInput from "../form-input/form-input.component";
 
 import "./sign-up.styles.scss";
 import Button from "../button/button.component";
-
-
+import { connect } from "react-redux";
+import { Navigate } from "react-router-dom";
 
 const defaultFormFields = {
   displayName: "",
@@ -17,11 +18,9 @@ const defaultFormFields = {
   confirmPassword: "",
 };
 
-const SignUpForm = () => {
+const SignUpForm = ({ currentUser }) => {
   const [formFields, setFormField] = useState(defaultFormFields);
   const { displayName, email, password, confirmPassword } = formFields;
-  
-
 
   const resetFormField = () => {
     setFormField(defaultFormFields);
@@ -58,6 +57,10 @@ const SignUpForm = () => {
 
     setFormField({ ...formFields, [name]: value });
   };
+
+  if (currentUser) {
+    return <Navigate to="/shop" />;
+  }
   return (
     <div className="sign-up-container">
       <h2>Don't have an account</h2>
@@ -105,4 +108,8 @@ const SignUpForm = () => {
   );
 };
 
-export default SignUpForm;
+const mapStateToProps = (state) => ({
+  currentUser: state.user.currentUser
+});
+
+export default connect(mapStateToProps)(SignUpForm);
