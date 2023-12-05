@@ -1,4 +1,5 @@
 import { useState } from "react";
+import {connect} from 'react-redux'
 import {
   signInWithGooglePopup,
   signInAuthUserWithEmailAndPassword,
@@ -9,13 +10,14 @@ import "./sign-in.styles.jsx";
 import Button ,{BUTTON_TYPE_CLASSES}from "../button/button.component";
 
 import { SignInContainer,ButtonContainer } from "./sign-in.styles.jsx";
+import { Navigate } from "react-router-dom";
 
 const defaultFormFields = {
   email: "",
   password: "",
 };
 
-const SignInForm = () => {
+const SignInForm = ({currentUser}) => {
   const [formFields, setFormField] = useState(defaultFormFields);
   const { email, password } = formFields;
 
@@ -49,6 +51,11 @@ const SignInForm = () => {
 
     setFormField({ ...formFields, [name]: value });
   };
+
+  if(currentUser){
+    return <Navigate to="/shop"/>
+  }
+
   return (
     <SignInContainer>
       <h2>I have an account</h2>
@@ -83,4 +90,8 @@ const SignInForm = () => {
   );
 };
 
-export default SignInForm;
+const mapStateToProps=state=>({
+  currentUser:state.user,currentUser
+})
+
+export default connect(mapStateToProps)(SignInForm);
